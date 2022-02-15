@@ -1,0 +1,13 @@
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name = "com.mondee.student.Student" table = "Student">
+     
+      <id name = "sid"  column = "sid"/> 
+      <property name = "sname" column = "sname"></property>
+        <property name = "sage" column = "sage"></property>
+   </class>
+</hibernate-mapping>

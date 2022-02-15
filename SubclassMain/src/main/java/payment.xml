@@ -1,0 +1,21 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+<hibernate-mapping>
+<class name="com.mondee.Payment" table="payment2">
+<id name="paymentid" column="pid"></id>
+<discriminator column = "paymentType" type="string" length="30"></discriminator>
+<property name="amount" column="amount"></property>
+
+ <subclass name="com.mondee.CreditCard" discriminator-value="CC">
+  <property name="creditCardType" column="ccType"> </property>
+  </subclass>
+  
+  <subclass name="com.mondee.Cheque" discriminator-value="CQ">
+  <property name="chequeType" column="cqType"> </property>
+  </subclass>
+
+</class>
+
+
+</hibernate-mapping>
