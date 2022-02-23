@@ -1,0 +1,45 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+        "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+        <beans>
+        <bean id="connectionobject" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
+         <property name="url" value="jdbc:mysql://Localhost:3306/mondee"></property> 
+           <property name="username" value="root"></property>
+             <property name="password" value="1234"></property>
+        </bean>
+      
+      <bean id="mysf" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+      <property name="dataSource">
+      <ref bean="connectionobject"></ref>
+      
+      </property>
+     <property name="mappingResources">
+     <list> <value>Student.xml</value></list></property>
+     
+     <property name="hibernateProperties">
+     <props>
+     <prop key="hibernate.hbm2ddl.auto">update</prop>
+     <prop key="hibernate.show_sql">true</prop>
+     <prop key="hibernate.dialet">org.hibernate.dialect.MYSQLDialect</prop>
+     </props>
+     </property>
+     </bean> 
+    <bean id="hibernateobject" class="com.example.SpringJdbcSelect">
+    <property name="sessionFactory">
+    <ref bean="mysf"></ref></property></bean> 
+     
+     
+     
+        
+      <!-- <bean id="jdbcobject" class="org.springframework.jdbc.core.JdbcTemplate">
+        <constructor-arg>
+        <ref bean="connectionobject"></ref>
+        </constructor-arg>
+        </bean> 
+        
+        <bean id="jdbctempleteobject" class="com.example.SpringJdbcSelect">
+        <property name="jt">
+        <ref bean="jdbcobject"></ref>
+        </property>
+        </bean>-->
+      </beans>  
